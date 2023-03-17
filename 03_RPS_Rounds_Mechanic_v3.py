@@ -31,18 +31,19 @@ while end_game == "no":
     # Rounds Heading
     print()
     if rounds == "":
-        heading = "Infinite Mode: Round {}".format(rounds_played)
-        print(heading)
-        choose = input("{} or 'xxx' to end: ".format(choose_instructions))
-        if choose == "xxx":
-            break
+        heading = "Infinite Mode: Round {}".format(rounds_played + 1)
 
     else:
         heading = f"Round {rounds_played + 1} of {rounds}"
-        print(heading)
         choose = input(choose_instructions)
         if rounds_played == rounds - 1:
             end_game = "yes"
+
+    print(heading)
+    choose = input("{} or 'xxx' to end: ".format(choose_instructions))
+
+    if choose == "xxx":
+        break
 
     # Rest of the loop / game
     print(f"You chose {choose}")

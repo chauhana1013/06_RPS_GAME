@@ -1,7 +1,7 @@
-# Functions go here...
-def check_choice(question):
+# Version 2 - error message included when calling function
 
-    error = "Please choose from Rock, Paper, Scissors or type 'xxx' to exit"
+# Functions go here...
+def check_choice(question, error):
 
     while True:
         response = input(question).lower()
@@ -17,7 +17,6 @@ def check_choice(question):
 
         elif response == "xxx":
             return response
-
         else:
             print(error)
             print()
@@ -30,7 +29,8 @@ user_choice = ""
 while user_choice != "xxx":
 
     # Ask user for choice and check it's valid
-    user_choice = check_choice("Choose Rock, Paper, and Scissors (r/p/s): ")
+    user_choice = check_choice("Choose Rock, Paper, and Scissors (r/p/s): ",
+                               "Please choose from Rock, Paper, Scissors or type 'xxx' to exit")
 
     # Print out choice for comparison purposes
     print()

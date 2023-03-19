@@ -16,7 +16,7 @@ def rounds_checker():
             except ValueError:
                 print(round_error)
                 continue
-    return response
+        return response
 
 
 rounds_played = 0
@@ -35,7 +35,6 @@ while end_game == "no":
 
     else:
         heading = f"Round {rounds_played + 1} of {rounds}"
-        choose = input(choose_instructions)
         if rounds_played == rounds - 1:
             end_game = "yes"
 

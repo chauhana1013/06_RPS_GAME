@@ -16,10 +16,12 @@ def rounds_checker():
 
                 if response < 1:
                     print(round_error)
+                    print()
                     continue
 
             except ValueError:
                 print(round_error)
+                print()
                 continue
         return response
 
@@ -44,9 +46,11 @@ def check_choice(question, valid_list, error):
 
 # Main Routine goes here
 
+
 # Lists of valid responses
 yes_no_list = ["yes", "no"]
 rps_list = ["rock", "paper", "scissors", "xxx"]
+
 
 # Ask user if they have played the game before
 # If 'yes', show instructions
@@ -54,6 +58,7 @@ rps_list = ["rock", "paper", "scissors", "xxx"]
 
 # Ask user for # of rounds then loop...
 rounds_played = 0
+
 
 # Ask user for # of rounds, press <enter> for infinite mode
 rounds = rounds_checker()
@@ -72,11 +77,17 @@ while end_game == "no":
 
     print(heading)
     choose_instructions = "Please choose Rock (r), Paper (p), Scissors (s): "
-    choose_error = f"{choose_instructions} or 'xxx' to end: "
+    choose_error = "Please choose Rock (r), Paper (p), Scissors (s) or 'xxx' to end: "
 
     # Ask user for choice and check it's valid
     choose = check_choice(choose_instructions, rps_list,
                           choose_error)
+
+    # Get computer choice
+     
+    # Compare choices
+
+    # End game if exit code is typed
 
     if choose == "xxx":
         break
@@ -84,6 +95,7 @@ while end_game == "no":
     # Rest of the loop / game
     print(f"You chose {choose}")
     rounds_played += 1
+
 
 # Ask user if they want to see their game history
 # If 'yes, show game history

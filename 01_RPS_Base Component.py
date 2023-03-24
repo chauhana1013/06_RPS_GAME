@@ -80,20 +80,35 @@ while end_game == "no":
     choose_error = "Please choose Rock (r), Paper (p), Scissors (s) or 'xxx' to end: "
 
     # Ask user for choice and check it's valid
-    choose = check_choice(choose_instructions, rps_list,
-                          choose_error)
+    user_choice = check_choice(choose_instructions, rps_list, choose_error)
 
     # Get computer choice
-     
+    computer_choice = random.choice(rps_list[:-1])
+
     # Compare choices
+    if user_choice == "rock" and computer_choice == "scissors":
+        result = "You won!"
+
+    elif user_choice == "paper" and computer_choice == "rock":
+        result = "You won!"
+
+    elif user_choice == "scissors" and computer_choice == "paper":
+        result = "You won!"
+
+    elif user_choice == computer_choice:
+        result = "Its a tie"
+
+    else:
+        result = "You lost (better luck next time)"
 
     # End game if exit code is typed
-
-    if choose == "xxx":
+    if user_choice == "xxx":
         break
 
     # Rest of the loop / game
-    print(f"You chose {choose}")
+    print()
+    print(f"You chose {user_choice} and Computer chose {computer_choice}")
+    print(result)
     rounds_played += 1
 
 

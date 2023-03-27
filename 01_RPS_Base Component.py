@@ -56,9 +56,10 @@ rps_list = ["rock", "paper", "scissors", "xxx"]
 # If 'yes', show instructions
 
 
-# Ask user for # of rounds then loop...
+# Rounds won will be calculated (total - draw - lost)
 rounds_played = 0
-
+rounds_lost = 0
+rounds_drawn = 0
 
 # Ask user for # of rounds, press <enter> for infinite mode
 rounds = rounds_checker()
@@ -85,34 +86,50 @@ while end_game == "no":
     # Get computer choice
     computer_choice = random.choice(rps_list[:-1])
 
-    # Compare choices
-    if user_choice == "rock" and computer_choice == "scissors":
-        result = "You won!"
-
-    elif user_choice == "paper" and computer_choice == "rock":
-        result = "You won!"
-
-    elif user_choice == "scissors" and computer_choice == "paper":
-        result = "You won!"
-
-    elif user_choice == computer_choice:
-        result = "Its a tie"
-
-    else:
-        result = "You lost (better luck next time)"
-
     # End game if exit code is typed
     if user_choice == "xxx":
         break
 
+    # Compare choices
+    if user_choice == "rock" and computer_choice == "scissors":
+        result = "won"
+
+    elif user_choice == "paper" and computer_choice == "rock":
+        result = "won"
+
+    elif user_choice == "scissors" and computer_choice == "paper":
+        result = "won"
+
+    elif user_choice == computer_choice:
+        result = "tie"
+        rounds_drawn += 1
+
+    else:
+        result = "lost"
+        rounds_lost += 1
+
+    if result == "tie":
+        feedback = "It's a tie"
+
+    else:
+        feedback = f"{user_choice} vs {computer_choice} - You {result}"
+
     # Rest of the loop / game
     print()
-    print(f"You chose {user_choice} and Computer chose {computer_choice}")
-    print(result)
+    print(feedback)
     rounds_played += 1
 
 
 # Ask user if they want to see their game history
 # If 'yes, show game history
 
-# Show game statistics
+
+# Quick Calculations (STATS)
+rounds_won = rounds_played - rounds_lost - rounds_drawn
+
+# End of Game Statements
+print()
+print("***** End Game Summary *****")
+print(f"Won: {rounds_won} \t|\t Lose: {rounds_lost} \t|\t Draw: {rounds_drawn}")
+print()
+print("Thanks for playing")

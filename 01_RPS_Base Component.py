@@ -51,7 +51,7 @@ def check_choice(question, valid_list, error):
 yes_no_list = ["yes", "no"]
 rps_list = ["rock", "paper", "scissors", "xxx"]
 
-
+game_history = []
 # Ask user if they have played the game before
 # If 'yes', show instructions
 
@@ -109,7 +109,7 @@ while end_game == "no":
         rounds_lost += 1
 
     if result == "tie":
-        feedback = "It's a tie"
+        feedback = f"{user_choice} vs {computer_choice} - It's a tie"
 
     else:
         feedback = f"{user_choice} vs {computer_choice} - You {result}"
@@ -118,18 +118,28 @@ while end_game == "no":
     print()
     print(feedback)
     rounds_played += 1
-
-
-# Ask user if they want to see their game history
-# If 'yes, show game history
-
+    game_history.append(feedback)
 
 # Quick Calculations (STATS)
 rounds_won = rounds_played - rounds_lost - rounds_drawn
 
+# **** Calculate Game Stats **** #
+win_percentage = rounds_won / rounds_played * 100
+loss_percentage = rounds_lost / rounds_played * 100
+draw_percentage = rounds_drawn / rounds_played * 100
+
+# Ask user if they want to see their game history
+# If 'yes, show game history
+response = input("Would you like to see your Game History? ").lower()
+if response == "yes" or response == "y":
+    print()
+    print("***** Game History *****")
+
+    for game in game_history:
+        print(game)
+
 # End of Game Statements
 print()
-print("***** End Game Summary *****")
-print(f"Won: {rounds_won} \t|\t Lose: {rounds_lost} \t|\t Draw: {rounds_drawn}")
-print()
-print("Thanks for playing")
+print("***** Game Summary *****")
+print(f"Won: {rounds_won} ({win_percentage:.0f}%) \nDrawn: {rounds_drawn} ({draw_percentage:.0f}%) \n"
+      f"Lost: {rounds_lost} ({loss_percentage:.0f}%)")
